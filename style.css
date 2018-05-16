@@ -1,0 +1,87 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    background-color:#1C0602;
+    font-family: 'Merienda One', cursive;
+    color: #FFEACE;
+    font-size: 20px;
+}
+#parts {
+   min-height: 100vh;
+   overflow: hidden;
+   display: flex; /*flex container*/
+}
+.part {
+    text-align: center;
+    flex: 1; /*flex item, każdy zajmuje tyle samo miejsca czyli 1*/
+    display: flex; /*flex container dla el. p*/
+    justify-content: center;
+    flex-direction: column; /*ustawia w kolumnach flex-items czyli tutaj p*/
+    transition: 
+        font-size .7s,
+        flex .7s;
+}
+.part.open {
+    font-size: 2em;
+    flex: 5; /*kiedy panel jest otwarty zajmuje 5*więcej miejsca niż panel zamkniety*/
+}
+.part p {
+    width: 100%;
+    flex: 1 0 auto;
+    display: flex; /*flex container dla p*/
+    justify-content: center;
+    align-items: center;
+    transition: transform .5s;
+}
+.part p:nth-child(2) {
+    font-size: 2em;
+    text-transform: uppercase;
+}
+.part p:first-child {
+    transform: translateY(-100%); /*znikają górne napisy*/
+}
+.part.open-active p:first-child {
+    transform: translateY(0); /*pojawiają się górne napisy*/
+}
+.part p:last-child {
+    transform: translateY(100%); /*znikają dolne napisy*/
+}
+.part.open-active p:last-child {
+    transform: translateY(0); /*pojawiają się dolne napisy*/
+}
+.part1 {
+    background-color: #FF992C;
+}
+.part2 {
+    background-color: #F27823;
+}
+.part3 {
+    background-color: #F26320;
+}
+.part4 {
+    background-color: #BF3E18;
+}
+.part5 {
+    background-color: #8C1D0C;
+}
+
+@media screen and (max-width: 1000px) {
+    body {
+        font-size: 10px;
+    }
+    .part.open {
+        font-size: 1.8em;
+        flex: 3;
+    }
+    .part p:nth-child(2) {
+        font-size: 2em;
+    }
+}
+@media screen and (max-width: 530px) {
+    body {
+        font-size: 6px;
+    }
+}
